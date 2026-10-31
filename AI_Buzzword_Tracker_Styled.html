@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Buzzword Tracker — Field Guide</title>
+<style>
+:root {
+  --ink:#1d2939; --muted:#667085; --paper:#fbfaf7; --card:#fff;
+  --line:#e8e5de; --accent:#5b62d6; --accent-soft:#efefff;
+  --green:#28765b; --warm:#b66b35; --shadow:0 12px 36px rgba(35,38,54,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.72 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.page{max-width:940px;margin:0 auto;padding:52px 28px 100px}
+.hero{padding:44px 46px 38px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,#f2f0ff 0%,#fff 58%,#f4f8f4 100%);box-shadow:var(--shadow);margin-bottom:36px}
+.eyebrow{font-size:11px;font-weight:750;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,7vw,62px);line-height:1.04;letter-spacing:-.04em;margin:0 0 16px;font-weight:600;color:#20263b}
+.hero p{max-width:690px;color:#596274;margin:0;font-size:16px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.pill{border:1px solid #dedcf4;background:rgba(255,255,255,.72);border-radius:999px;padding:6px 12px;font-size:12px;color:#555c79;font-weight:650}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:31px;line-height:1.2;letter-spacing:-.025em;margin:52px 0 18px;padding-bottom:12px;border-bottom:1px solid var(--line);color:#252b40}
+h3{font-size:19px;line-height:1.35;margin:32px 0 10px;color:#3c4560}
+p{margin:10px 0 14px}
+ul{list-style:none;margin:14px 0 24px;padding:0}
+li{position:relative;margin:0;padding:11px 14px 11px 30px;border-bottom:1px solid rgba(232,229,222,.72);color:#4c5668}
+li::before{content:"";position:absolute;left:9px;top:21px;width:6px;height:6px;border-radius:50%;background:#a3a6c8}
+li strong{color:#242b40;font-weight:720}
+li a,p a{color:var(--accent);text-decoration:none;border-bottom:1px solid #d5d5fa}
+li a:hover,p a:hover{border-color:var(--accent)}
+.task{display:flex;gap:12px;padding-left:8px;align-items:flex-start}
+.task::before{display:none}
+.check{flex:0 0 17px;height:17px;border:1.5px solid #b9bdc9;border-radius:5px;margin-top:5px;position:relative}
+.check.checked{background:var(--green);border-color:var(--green)}
+.check.checked:after{content:"✓";position:absolute;color:white;font-size:12px;line-height:15px;left:2px;top:0}
+.tag{font:700 10px/1.5 ui-monospace,monospace;letter-spacing:.08em;color:#6b63c9;background:var(--accent-soft);border-radius:5px;padding:3px 6px;margin-left:5px;vertical-align:2px}
+blockquote{margin:0 0 28px;padding:18px 22px;border-left:3px solid var(--accent);background:#f2f1fc;border-radius:0 12px 12px 0;color:#515a70}
+blockquote p{margin:0}
+.table-wrap{overflow-x:auto;margin:18px 0 28px;border:1px solid var(--line);border-radius:14px;background:white}
+table{width:100%;border-collapse:collapse;min-width:540px}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#70778a;background:#f7f6f2}
+td{font-size:14px;color:#4c5668}
+tr:last-child td{border-bottom:0}
+code{font: .9em ui-monospace,SFMono-Regular,Menlo,monospace;background:#f0eff6;padding:2px 5px;border-radius:5px}
+.section-rule{border:0;border-top:1px solid var(--line);margin:48px 0}
+small{font-size:11px}
+footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+@media(max-width:600px){.page{padding:20px 16px 60px}.hero{padding:30px 24px}h2{font-size:26px;margin-top:40px}body{font-size:15px}}
+@media print{body{background:white}.page{max-width:none;padding:0}.hero{box-shadow:none}a{color:inherit}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="hero">
+<p class="eyebrow">A living field guide · AI engineering</p>
+<h1>AI Buzzword<br>Tracker</h1>
+<p>A practical map of the ideas, systems and tools shaping modern AI. Work from fundamentals to production engineering, then keep extending the guide as you learn.</p>
+<div class="meta"><span class="pill">110 original concepts</span><span class="pill">48 additional concepts</span><span class="pill">Updated 31 Oct 2026</span></div>
+</header>
+<h1>AI Buzzword Tracker</h1>
+<blockquote>
+<p>A living learning roadmap and reference glossary for AI engineering. Keep this file as the source of truth: append concepts, update definitions, add notes from projects, and revisit the status as your understanding improves.</p>
+</blockquote>
+<p><strong>Source tracker:</strong> <code>AI Buzzword Tracker.html</code></p>
+<p><strong>Markdown edition created:</strong> 31 October 2026</p>
+<p><strong>Scope:</strong> LLM foundations, application engineering, agents, model development, production systems, safety and hands-on tools.</p>
+<h2>How to use this file</h2>
+<ul>
+<li>Change <code> [ ] </code> to <code> [x] </code> when you can explain a topic and recognize when to use it—not merely after skimming it.</li>
+<li>Use <strong>In progress</strong> for topics you are actively learning; add your notes underneath the entry.</li>
+<li>Add a short implementation or debugging example wherever possible.</li>
+<li>Keep emerging terms, vendor names and marketing language labelled as such; a term being popular does not make it a distinct technical discipline.</li>
+<li>When adding a new term, include: plain-English definition, why it matters, practical example, trade-offs, and at least one reliable resource.</li>
+</ul>
+<h3>Suggested status convention</h3>
+<ul>
+<li><code>[ ]</code> Not started</li>
+<li><code>[~]</code> In progress</li>
+<li><code>[x]</code> Can explain and apply</li>
+<li><code>[?]</code> Needs verification / definition is disputed</li>
+</ul>
+<h3>Suggested priority convention</h3>
+<ul>
+<li><strong>P0</strong> — foundational or immediately useful in production</li>
+<li><strong>P1</strong> — important next layer</li>
+<li><strong>P2</strong> — useful specialization or emerging topic</li>
+<li><strong>Watch</strong> — interesting, but hype or practical value is still uncertain</li>
+</ul>
+<h2>Learning roadmap</h2>
+<h3>1. Foundations</h3>
+<p>How LLMs work under the hood. You&#x27;ve covered most of this; fill the gaps.</p>
+<ul>
+<li class="task"><span class="check checked"></span><span><strong>LLM basics</strong> — What a large language model is: a next-token predictor trained on huge text corpora.</span></li>
+<li>Video: <a href="https://www.youtube.com/watch?v=7xTGNNLPyMI" target="_blank" rel="noopener noreferrer">Deep Dive into LLMs like ChatGPT (Karpathy, 3.5 h) ↗</a></li>
+<li>Video: <a href="https://www.youtube.com/watch?v=LPZh9BOjkQs" target="_blank" rel="noopener noreferrer">Large Language Models explained briefly (3Blue1Brown) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>Prompt engineering</strong> — Writing instructions, examples and structure so a model gives the output you want.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>Transformers &amp; attention</strong> — The architecture behind every modern LLM; attention lets each token look at every other token.</span></li>
+<li>Video: <a href="https://www.youtube.com/watch?v=wjZofJX0v4M" target="_blank" rel="noopener noreferrer">Transformers, the tech behind LLMs (3Blue1Brown, 27 min) ↗</a></li>
+<li>Video: <a href="https://www.youtube.com/watch?v=eMlx5fFNoYc" target="_blank" rel="noopener noreferrer">Attention in transformers, step-by-step (3Blue1Brown) ↗</a></li>
+<li>Reference: <a href="https://www.3blue1brown.com/lessons/gpt" target="_blank" rel="noopener noreferrer">3Blue1Brown lesson page ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>Tokens &amp; tokenization</strong> — Models read sub-word tokens, not words. Pricing, limits and quirks all come from this.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>Context window</strong> — How many tokens a model can see at once (now often 200K to 1M+).</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>Embeddings</strong> — Turning text into vectors so that similar meanings sit close together. The basis of semantic search.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>Temperature &amp; sampling</strong> — Knobs (temperature, top-p) that control how random or deterministic outputs are.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>Hallucination</strong> — When a model states something false with confidence, and the techniques used to reduce it.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>Pretraining → fine-tuning → RLHF</strong> — The three stages that turn raw text prediction into a helpful assistant.</span></li>
+<li>Video: <a href="https://www.youtube.com/watch?v=7xTGNNLPyMI" target="_blank" rel="noopener noreferrer">Deep Dive into LLMs like ChatGPT (Karpathy): covers the full training stack ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+</ul>
+<h3>2. Building with LLMs</h3>
+<p>The application layer. LangChain sits here, so this is your next stretch.</p>
+<ul>
+<li class="task"><span class="check checked"></span><span><strong>LangChain</strong> — Framework of building blocks (prompts, models, retrievers, tools) for LLM apps.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>LangGraph</strong> — LangChain&#x27;s graph/state-machine library for agents with loops, branches and persistence.</span></li>
+<li>Reference: <a href="https://reference.langchain.com/python/langgraph/overview" target="_blank" rel="noopener noreferrer">LangGraph reference (official) ↗</a></li>
+<li>Reference: <a href="https://docs.langchain.com/langgraph-platform/why-langgraph" target="_blank" rel="noopener noreferrer">Why LangGraph + basics tutorial series (official docs) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>LlamaIndex</strong> — Framework focused on connecting LLMs to your data: ingestion, indexing, retrieval.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>RAG (Retrieval-Augmented Generation)</strong> — Fetch relevant documents first, then let the model answer using them.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check checked"></span><span><strong>Vector databases</strong> — Stores built for embedding search: pgvector, Pinecone, Qdrant, Weaviate, Chroma.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Chunking, reranking &amp; hybrid search</strong> — The unglamorous parts that decide whether RAG actually works.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>GraphRAG</strong> — RAG over a knowledge graph of entities and relations instead of flat chunks.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Function calling / tool use</strong> — Letting the model call your APIs by emitting structured calls you execute.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Structured outputs</strong> — Forcing the model to return valid JSON matching a schema.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Prompt caching</strong> — Reusing a processed prompt prefix to cut cost and latency on repeat calls.</span></li>
+<li>Reference: <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank" rel="noopener noreferrer">Prompt caching (Anthropic docs) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Context engineering</strong> — The successor to prompt engineering: deciding everything that goes into the context, not just the instruction.</span></li>
+<li>Video: <a href="https://www.youtube.com/watch?v=IS<em>y40zY-hc" target="</em>blank" rel="noopener noreferrer">Advanced Context Engineering for Agents (Dex Horthy, YC, ~15 min) ↗</a></li>
+<li>Reference: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener noreferrer">Effective context engineering for AI agents (Anthropic) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Context rot &amp; compaction</strong> <strong>NEW in source tracker</strong> — Models get worse as the window fills, well before the advertised limit. Compaction (reversible: drop what can be re-read from files) and summarization (lossy) keep long-running agents sharp.</span></li>
+<li>Video: <a href="https://www.youtube.com/watch?v=IS<em>y40zY-hc" target="</em>blank" rel="noopener noreferrer">Advanced Context Engineering for Agents (Dex Horthy, YC, ~15 min) ↗</a></li>
+<li>Reference: <a href="https://www.philschmid.de/context-engineering-part-2" target="_blank" rel="noopener noreferrer">Context Engineering for AI Agents: Part 2 (Phil Schmid) ↗</a></li>
+<li>Reference: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener noreferrer">Effective context engineering for AI agents (Anthropic) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Context layer, context graphs &amp; semantic layers</strong> <strong>NEW in source tracker</strong> — A governed layer of business meaning (metrics, entities, lineage) that agents query instead of raw tables. “Context graph” is the hyped version and many vendors are selling it, so read with some salt.</span></li>
+<li>Reference: <a href="https://martinfowler.com/articles/making-data-ready-for-agentic-ai.html" target="_blank" rel="noopener noreferrer">Making Your Data Ready for Agentic AI (Martin Fowler) ↗</a></li>
+<li>Reference: <a href="https://motherduck.com/blog/context-layer-vs-semantic-layer-ontology/" target="_blank" rel="noopener noreferrer">Context, semantics and ontology: a primer (MotherDuck) ↗</a></li>
+<li>Reference: <a href="https://siliconangle.com/2026/01/18/2026-data-predictions-scaling-ai-agents-via-contextual-intelligence/" target="_blank" rel="noopener noreferrer">2026 data predictions, sceptical on context graphs (SiliconANGLE) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+</ul>
+<h3>3. Agents</h3>
+<p>The biggest buzzword cluster of 2025–26. Most new tooling lives here.</p>
+<ul>
+<li class="task"><span class="check"></span><span><strong>AI agents / agentic AI</strong> — An LLM in a loop that plans, calls tools, observes results and keeps going until a goal is met.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>ReAct pattern</strong> — Reason → Act → Observe. The original agent loop most frameworks still follow.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Multi-agent systems</strong> — Several agents with different roles coordinating, e.g. orchestrator plus worker subagents.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>MCP (Model Context Protocol)</strong> — Open standard for plugging tools and data sources into any AI app. Think &quot;USB-C for AI&quot;.</span></li>
+<li>Reference: <a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener noreferrer">Official MCP site and docs ↗</a></li>
+<li>Video: <a href="https://ai.engineer/talks/building-agents-with-mcp" target="_blank" rel="noopener noreferrer">Building Agents with MCP, full workshop (Mahesh Murag, Anthropic, 1 h 44 m; AI Engineer page) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>A2A (Agent-to-Agent protocol)</strong> — Standard for agents from different vendors to talk to and delegate to each other.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Agent Skills</strong> — Packaged folders of instructions and scripts an agent loads on demand for a specific task.</span></li>
+<li>Reference: <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener noreferrer">Agent Skills overview (Anthropic docs) ↗</a></li>
+<li>Reference: <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices" target="_blank" rel="noopener noreferrer">Skill authoring best practices (Anthropic docs) ↗</a></li>
+<li>Reference: <a href="https://platform.claude.com/docs/en/build-with-claude/skills-guide" target="_blank" rel="noopener noreferrer">Using Skills with the API (Anthropic docs) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Agent memory</strong> — Short-term (context) vs long-term (stored, retrieved) memory so agents remember across sessions.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Computer use &amp; browser agents</strong> — Agents that see a screen and click and type like a human.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Coding agents</strong> — Claude Code, Codex, Cursor and friends: agents that read, edit and run code in your repo.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Vibe coding</strong> — Building software mostly by describing it to an AI and steering, rather than writing code by hand.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Agentic engineering</strong> <strong>NEW in source tracker</strong> — Karpathy’s name for the grown-up version of vibe coding: you orchestrate coding agents under specs, tests and review instead of writing most of the code yourself.</span></li>
+<li>Video: <a href="https://lennysnewsletter.com/p/an-ai-state-of-the-union" target="_blank" rel="noopener noreferrer">Simon Willison on Lenny’s Podcast (1h40, covers his agentic engineering patterns) ↗</a></li>
+<li>Reference: <a href="https://www.morphllm.com/agentic-engineering" target="_blank" rel="noopener noreferrer">Agentic engineering guide ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Spec-driven development</strong> <strong>NEW in source tracker</strong> — Write a structured spec first and let agents build against it, so the spec rather than the chat history is the source of truth. Tools: GitHub Spec Kit, Amazon Kiro.</span></li>
+<li>Reference: <a href="https://towardsdatascience.com/from-vibe-coding-to-spec-driven-development/" target="_blank" rel="noopener noreferrer">From vibe coding to spec-driven development ↗</a></li>
+<li>Reference: <a href="https://www.itential.com/resource/blog/vibes-to-specs-development/" target="_blank" rel="noopener noreferrer">From vibes to specs ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Human-in-the-loop</strong> — Approval checkpoints where an agent pauses for a person before risky actions.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Long-horizon / background agents</strong> — Agents that run for hours on their own, often on a schedule or in the cloud.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Harness engineering</strong> <strong>NEW in source tracker</strong> — Agent = model + harness: everything around the model (tools, memory, sandbox, guardrails, feedback loops). Named in early 2026; who coined it is disputed, but the claim is that the harness often matters more than the model.</span></li>
+<li>Video: <a href="https://www.youtube.com/watch?v=W9BX0jyzd2k" target="_blank" rel="noopener noreferrer">What is an Agentic Harness? (Google Cloud Tech) ↗</a></li>
+<li>Video: <a href="https://www.youtube.com/watch?v=rEeBqCJyvEE" target="_blank" rel="noopener noreferrer">AI Harness Engineering Explained in 27 Minutes ↗</a></li>
+<li>Video: <a href="https://www.youtube.com/watch?v=c8bE0cj7vHY" target="_blank" rel="noopener noreferrer">Ryan Lopopolo: Harness Engineering, when humans steer and agents execute ↗</a></li>
+<li>Reference: <a href="https://www.oreilly.com/radar/agent-harness-engineering/" target="_blank" rel="noopener noreferrer">Agent harness engineering (O’Reilly Radar) ↗</a></li>
+<li>Reference: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener noreferrer">Harness engineering for coding agent users (Böckeler) ↗</a></li>
+<li>Reference: <a href="https://marmelab.com/blog/2026/09/24/the-state-of-ai-harness-engineering-2026.html" target="_blank" rel="noopener noreferrer">State of AI Harness Engineering 2026 (reading list) ↗</a></li>
+<li>Reference: <a href="https://openai.com/index/harness-engineering/" target="_blank" rel="noopener noreferrer">Harness engineering with Codex (OpenAI, Feb 2026) ↗</a></li>
+<li>Reference: <a href="https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering" target="_blank" rel="noopener noreferrer">Improving deep agents with harness engineering (LangChain) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Proactive &amp; personal agents</strong> <strong>NEW in source tracker</strong> — Agents that act without being asked: they watch your apps, send a morning brief and keep working in their own cloud VM. Meta Muse (Sep 8), OpenAI Dots (Sep 29), Claude Duet (Oct 21, research preview), plus xAI’s Grok Bot. Duet asks approval before sending, paying, signing or deleting.</span></li>
+<li>Reference: <a href="https://www.engadget.com/2293646/claude-duet-is-anthropics-answer-to-meta-muse-and-openai-dots/" target="_blank" rel="noopener noreferrer">Claude Duet vs Muse vs Dots (Engadget) ↗</a></li>
+<li>Reference: <a href="https://9to5google.com/2026/10/21/claude-duet-anthropic-ai-agent-waitlist/" target="_blank" rel="noopener noreferrer">9to5Google (includes video) ↗</a></li>
+<li>Reference: <a href="https://claude.com/resources/articles/claude-duet" target="_blank" rel="noopener noreferrer">Anthropic’s Claude Duet page ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>AGENTS.md</strong> <strong>NEW in source tracker</strong> — A plain markdown file in your repo telling coding agents how to build, test and behave. Now stewarded by the Agentic AI Foundation under the Linux Foundation.</span></li>
+<li>Reference: <a href="https://agents.md/" target="_blank" rel="noopener noreferrer">agents.md ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>AI coworkers (persistent work agents)</strong> <strong>NEW in source tracker</strong> — Always-on agents with their own identity (email, calendar, directory entry) that take objectives instead of step-by-step instructions, spin up temporary subagents and can run for hours or days. Google’s Gemini agent, announced Oct 8 in early access, can route work between Gemini and Claude models.</span></li>
+<li>Reference: <a href="https://9to5google.com/2026/10/08/gemini-agent-google-cloud/" target="_blank" rel="noopener noreferrer">Google Cloud announces the Gemini agent (9to5Google) ↗</a></li>
+<li>Reference: <a href="https://techgenyz.com/google-gemini-agent-enterprise-ai/" target="_blank" rel="noopener noreferrer">Gemini agent adds Claude models and AI coworkers ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Agentic commerce (UCP, ACP, AP2)</strong> <strong>NEW in source tracker</strong> — Agents that find, compare and buy on your behalf, built on a protocol stack: UCP (Google and Shopify) for discovery through checkout, ACP (OpenAI and Stripe) for checkout inside a chat, AP2 (Google-initiated) for signed proof that a human approved the spend, and x402 for stablecoin payments over HTTP.</span></li>
+<li>Reference: <a href="https://dev.to/brudy<em>dev24/agentic-commerce-protocols-explained-ap2-x402-acp-and-ucp-1hbb" target="</em>blank" rel="noopener noreferrer">AP2, x402, ACP and UCP explained ↗</a></li>
+<li>Reference: <a href="https://www.honeyb.ai/blog/agentic-commerce-protocols" target="_blank" rel="noopener noreferrer">ACP, AP2 and the payment-rail race ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+</ul>
+<h3>4. Models &amp; reasoning</h3>
+<p>What&#x27;s changing in the models themselves and why new releases matter.</p>
+<ul>
+<li class="task"><span class="check"></span><span><strong>Reasoning models &amp; test-time compute</strong> — Models that &quot;think&quot; longer before answering, trading compute for accuracy.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Chain-of-thought</strong> — Having the model write out intermediate steps; the seed of today&#x27;s reasoning models.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Mixture of Experts (MoE)</strong> — Huge models where only a few &quot;expert&quot; sub-networks activate per token. Cheaper to run.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Small language models (SLMs)</strong> — Compact models (Phi, Gemma, small Qwen/Llama) that run cheaply or on-device.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Open-weight models</strong> — Models you can download and host: Llama, Qwen, DeepSeek, Mistral, Gemma, gpt-oss.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Multimodal models</strong> — Models that take and produce images, audio and video as well as text.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Distillation</strong> — Training a small model to imitate a big one.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Quantization</strong> — Shrinking weights to 8/4-bit so models fit on smaller hardware.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Synthetic data</strong> — Training data generated by models, now a major ingredient in training.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Scaling laws</strong> — The empirical rule that more data, parameters and compute predictably improve models.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Task time horizon (METR)</strong> <strong>NEW in source tracker</strong> — METR’s yardstick for agents: the length of task, measured in human working time, that a model completes at 50% reliability. They found it doubling roughly every 7 months; the 80% reliability horizon is much shorter.</span></li>
+<li>Reference: <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" rel="noopener noreferrer">METR: Measuring AI ability to complete long tasks ↗</a></li>
+<li>Reference: <a href="https://tobyord.com/writing/half-life" target="_blank" rel="noopener noreferrer">Toby Ord: Is there a half-life for AI agent success rates? ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>World models</strong> — Models that learn how environments behave, used for video generation and robotics.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+</ul>
+<h3>5. Training &amp; customization</h3>
+<p>How teams adapt models to their own domain.</p>
+<ul>
+<li class="task"><span class="check"></span><span><strong>Fine-tuning</strong> — Further training a base model on your own examples.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>LoRA / QLoRA / PEFT</strong> — Fine-tuning a tiny set of extra weights instead of the whole model. Cheap and popular.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>RLHF</strong> — Reinforcement learning from human feedback: how assistants learn preferred behaviour.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>DPO</strong> — Direct Preference Optimization: a simpler alternative to RLHF using preference pairs.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>RLVR &amp; RL environments</strong> — RL with automatically checkable rewards (tests pass, math is right). Key to reasoning models.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Constitutional AI</strong> — Training a model against a written set of principles, with AI feedback.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+</ul>
+<h3>6. Production &amp; LLMOps</h3>
+<p>Closest to your day job: making LLM systems reliable, observable and cheap.</p>
+<ul>
+<li class="task"><span class="check"></span><span><strong>Evals</strong> — Test suites for LLM behaviour. The thing that separates demos from products.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>LLM-as-a-judge</strong> — Using a model to grade another model&#x27;s outputs at scale.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Tracing &amp; observability</strong> — Logging every prompt, tool call and token: LangSmith, Langfuse, Arize, OpenTelemetry.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Guardrails</strong> — Input and output checks that block unsafe, off-topic or malformed responses.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Prompt injection</strong> — Malicious text in data that hijacks the model. The #1 security risk for agents.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Lethal trifecta</strong> <strong>NEW in source tracker</strong> — Simon Willison’s name for the risky agent combination: access to private data, exposure to untrusted content, and a way to communicate externally. With all three, one prompt injection can leak your data; the safe design removes a leg.</span></li>
+<li>Reference: <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/" target="_blank" rel="noopener noreferrer">The lethal trifecta for AI agents (original post) ↗</a></li>
+<li>Reference: <a href="https://simonwillison.net/2025/Aug/9/bay-area-ai/" target="_blank" rel="noopener noreferrer">His annotated talk at the Bay Area AI Security Meetup ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Agent identity (non-human identity)</strong> <strong>NEW in source tracker</strong> — Treating each agent as its own identity: named, authenticated, least-privilege, monitored, revocable and tied to a human owner. Fast becoming a core piece of agent security and governance.</span></li>
+<li>Reference: <a href="https://aembit.io/blog/what-kind-of-identity-should-your-ai-agent-have/" target="_blank" rel="noopener noreferrer">What kind of identity should your AI agent have? ↗</a></li>
+<li>Reference: <a href="https://www.microsoft.com/en-us/security/business/security-101/what-are-non-human-identities" target="_blank" rel="noopener noreferrer">Microsoft: What are non-human identities? ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Inference serving</strong> — vLLM, TGI, SGLang; KV cache, batching and speculative decoding for speed.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Model routing &amp; AI gateways</strong> — Sending each request to the cheapest model that can handle it, behind one API.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Token economics</strong> — Cost per million tokens, input vs output pricing, and latency budgets.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>On-device / edge AI</strong> — Running models locally on phones and laptops for privacy and speed.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Rogue agents &amp; agent permissions</strong> <strong>NEW in source tracker</strong> — In 2026 several countries, most recently India (CERT-In, Oct 16), reported test agents reaching live systems and reading data they shouldn’t. The cause was basic: exposed credentials and over-broad access. Least privilege and logging are the fix.</span></li>
+<li>Reference: <a href="https://techcrunch.com/2026/10/16/india-becomes-the-latest-country-to-report-rogue-ai-agent-activity/" target="_blank" rel="noopener noreferrer">India reports rogue AI agent activity (TechCrunch) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>WebAI (Opera)</strong> <strong>NEW in source tracker</strong> — Opera’s proposed web standard, announced Oct 27, for running open-weight models like Gemma locally in the browser. Brand new, so treat it as an announcement, not an established standard.</span></li>
+<li>Reference: <a href="https://www.newegg.com/insider/ai-news-this-week-october-26-30-2026" target="_blank" rel="noopener noreferrer">AI news roundup, Oct 26–30 (Newegg) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+</ul>
+<h3>7. Safety &amp; the big picture</h3>
+<p>The debates and terms you&#x27;ll hear in news and podcasts.</p>
+<ul>
+<li class="task"><span class="check"></span><span><strong>Alignment</strong> — Making AI systems pursue what their builders actually intend.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Mechanistic interpretability</strong> — Reverse-engineering what&#x27;s happening inside a neural network.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Red teaming</strong> — Deliberately attacking a model to find failures before release.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Jailbreaks</strong> — Prompts that trick a model into ignoring its safety training.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Sycophancy</strong> — Models telling users what they want to hear instead of what&#x27;s true.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>AGI / ASI</strong> — Artificial general / superintelligence: what labs say they&#x27;re aiming for, and the arguments over timelines.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Recursive self-improvement</strong> <strong>NEW in source tracker</strong> — AI systems doing a growing share of the work of building their own successors. Labs say AI is already speeding up AI development, but fully autonomous self-improvement hasn’t happened, and some experts argue it mostly compresses timelines within existing limits.</span></li>
+<li>Reference: <a href="https://www.anthropic.com/institute/recursive-self-improvement" target="_blank" rel="noopener noreferrer">Anthropic: When AI builds itself ↗</a></li>
+<li>Reference: <a href="https://cacm.acm.org/news/is-recursive-self-improvement-really-here/" target="_blank" rel="noopener noreferrer">CACM: Is recursive self-improvement really here? (skeptical view) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Frontier labs landscape</strong> — Who&#x27;s who: Anthropic, OpenAI, Google DeepMind, Meta, xAI, DeepSeek, Mistral, Qwen.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>AI regulation</strong> — EU AI Act, US policy and export controls, India&#x27;s AI governance push. The EU’s Digital Omnibus (in force 27 Jul 2026) pushed stand-alone high-risk obligations to 2 Dec 2027; bans and general-purpose model rules were not delayed.</span></li>
+<li>Reference: <a href="https://www.whitecase.com/insight-alert/eu-ai-omnibus-enters-force-amending-ai-act" target="_blank" rel="noopener noreferrer">EU AI Omnibus enters into force (White &amp; Case) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Sovereign AI</strong> — Countries building their own models and compute, e.g. the IndiaAI Mission.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>GEO (AI search optimization)</strong> <strong>NEW in source tracker</strong> — Writing content so AI answers quote it, not just so search ranks it. On Oct 15 Google said it will show source links higher in AI Overviews and AI Mode; Pew found people click far less when an AI summary appears.</span></li>
+<li>Reference: <a href="https://ppc.land/google-pushes-links-higher-in-ai-answers-as-preferred-sources-use-rises-7x/" target="_blank" rel="noopener noreferrer">Google pushes links higher in AI answers (PPC Land) ↗</a></li>
+<li>Reference: <a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/" target="_blank" rel="noopener noreferrer">Clicks drop when an AI summary appears (Pew) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Neoclouds &amp; the AI-bubble debate</strong> <strong>NEW in source tracker</strong> — Neoclouds are GPU-rental cloud providers. Nvidia financing its own customers faces a test as credit tightens (CNBC, Oct 24), which feeds the argument over whether AI spending is a bubble.</span></li>
+<li>Reference: <a href="https://www.cnbc.com/2026/10/24/nvidias-role-as-ai-financier-faces-first-big-test-as-neoclouds-take-market-hit.html" target="_blank" rel="noopener noreferrer">Nvidia’s role as AI financier faces first big test (CNBC) ↗</a></li>
+<li>Reference: <a href="https://en.wikipedia.org/wiki/AI<em>bubble" target="</em>blank" rel="noopener noreferrer">AI bubble (Wikipedia) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>SaaSpocalypse</strong> <strong>NEW in source tracker</strong> — 2026 shorthand for the software-stock sell-off and the doubts it raised about per-seat SaaS licences. Opinionated source, so treat the causes as contested.</span></li>
+<li>Reference: <a href="https://cirrusdesignstudio.co.uk/when-software-gets-cheap-what-2026s-tech-sell-off-means-for-business-systems/" target="_blank" rel="noopener noreferrer">When Software Gets Cheap: 2026’s Tech Sell-Off (Cirrus) ↗</a></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+</ul>
+<h3>8. Tools to try</h3>
+<p>Hands-on tools. Tick one off once you&#x27;ve actually used it, not just read about it. Start with Ollama, Langfuse and a coding agent.</p>
+<ul>
+<li class="task"><span class="check"></span><span><strong>Claude Code / Codex / Gemini CLI</strong> — Coding agents that work in your terminal and repo.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Cursor / Windsurf</strong> — VS Code-style editors with AI built in.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>GitHub Copilot</strong> — AI pair programmer; still the default in most companies.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>CrewAI</strong> — Role-based multi-agent setups, quick to prototype.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Microsoft Agent Framework</strong> — AutoGen and Semantic Kernel merged into one agent framework.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Lab agent SDKs</strong> — OpenAI Agents SDK, Claude Agent SDK and Google ADK: each lab&#x27;s own toolkit for building agents.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Pydantic AI</strong> — Type-safe agents built on Pydantic models.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>DSPy</strong> — Write LLM programs and let it optimize the prompts for you.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Ollama</strong> — One command to run Llama, Qwen, Gemma or DeepSeek on your laptop.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>LM Studio</strong> — Run local models through a GUI.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>vLLM</strong> — The standard engine for serving open models in production.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>pgvector</strong> — Vector search inside Postgres; often all a RAG app needs.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Qdrant / Pinecone / Weaviate / Chroma</strong> — Dedicated vector databases.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Unstructured / Docling / LlamaParse</strong> — Turn messy PDFs and documents into clean text for RAG.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Firecrawl</strong> — Turns websites into LLM-ready markdown.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>LangSmith / Langfuse / Arize Phoenix</strong> — Trace every LLM call and tool call. Langfuse is open source.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Braintrust / Promptfoo / DeepEval</strong> — Run eval suites like unit tests.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>OpenRouter</strong> — One API key for hundreds of models; handy for comparing them.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>LiteLLM</strong> — Gateway that puts every provider behind an OpenAI-style API, with routing and cost tracking.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Hugging Face</strong> — The hub for open models, datasets and demos.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>n8n</strong> — Open-source workflow automation with AI nodes.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Dify / Flowise</strong> — Visual builders for LLM apps.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>NotebookLM</strong> — Upload papers and chat with them, or get a podcast-style summary.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>Perplexity</strong> — AI search with citations.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+<li class="task"><span class="check"></span><span><strong>v0 / Lovable / Bolt</strong> — Describe an app and get working UI code.</span></li>
+<li>Notes: <em>Add your explanation, example, implementation notes or open questions.</em></li>
+</ul>
+<hr class="section-rule">
+<h2>Additional concepts to add to your radar</h2>
+<p>These entries are additions to the original tracker, not claims that the original definitions were wrong. They fill practical gaps that become important when moving from demos to reliable AI-backed software.</p>
+<h3>Building with LLMs</h3>
+<ul>
+<li class="task"><span class="check"></span><span><strong>Agent vs. workflow</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — A workflow follows a mostly predefined sequence; an agent chooses actions dynamically at runtime. Prefer workflows when the path is known, and agents when decisions genuinely depend on intermediate results.</span></li>
+<li>Reference: <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener noreferrer">Anthropic: Building effective agents ↗</a></li>
+<li>Reference: <a href="https://cloud.google.com/blog/products/ai-machine-learning/a-devs-guide-to-production-ready-ai-agents/" target="_blank" rel="noopener noreferrer">Google Cloud: Production-ready AI agents ↗</a></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Query rewriting &amp; decomposition</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Transforming a user&#x27;s question into better retrieval queries, or splitting a complex question into smaller sub-questions before retrieval.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Hybrid search</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Combining lexical retrieval (such as BM25) with vector similarity. It often performs better than either approach alone, especially for exact names, IDs and domain terminology.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Reranking</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — A second-stage model reorders retrieved candidates by relevance to the query. It can improve RAG quality, at the cost of extra latency and compute.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Parent-child retrieval</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Index small chunks for precise matching, then return a larger parent section for sufficient context.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Agentic RAG</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — An agent decides whether to retrieve, which sources or tools to query, and whether another retrieval pass is needed. More flexible, but harder to evaluate and control.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Semantic caching</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Reuse a prior answer or computation for a semantically similar request, rather than requiring an exact text match. Requires careful freshness and correctness rules.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>MCP host, client &amp; server</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — The host is the AI application; its MCP client manages a connection; the MCP server exposes tools, resources and prompts. These roles matter when designing integrations.</span></li>
+<li>Reference: <a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener noreferrer">Official MCP documentation ↗</a></li>
+<li>Reference: <a href="https://py.sdk.modelcontextprotocol.io/get-started/first-steps/" target="_blank" rel="noopener noreferrer">MCP Python SDK: first steps ↗</a></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+</ul>
+<h3>Agents</h3>
+<ul>
+<li class="task"><span class="check"></span><span><strong>Planning vs. execution</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Separate deciding what should happen from carrying out actions. Plans should be inspectable, bounded, revisable and checked against actual tool results.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Durable execution &amp; resumable workflows</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Persist workflow state so long-running tasks can recover after process crashes, retries or deployments without repeating unsafe side effects.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Agent orchestration</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — The control plane that schedules steps, routes tasks, manages state, handles retries and coordinates agents or tools.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Delegation &amp; subagent boundaries</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Assigning a bounded task to another agent or worker, with explicit inputs, outputs, permissions and resource limits.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Tool contracts &amp; schema design</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Treat tools as APIs: precise names, descriptions, typed arguments, validation, clear errors, idempotency and bounded side effects.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Agent sandboxing</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Run untrusted code or tool actions in isolated environments with restricted filesystem, network, credentials, CPU and memory access.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Checkpointing &amp; state persistence</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Save meaningful progress and execution state so an agent can resume, recover, or request human approval without losing its work.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Agent trajectory</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — The complete sequence of model decisions, tool calls, observations and state changes during a task. Useful for debugging and evaluation.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+</ul>
+<h3>Models &amp; reasoning</h3>
+<ul>
+<li class="task"><span class="check"></span><span><strong>Vision-language models (VLMs)</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Models that jointly process visual inputs and language, enabling image understanding, document interpretation and visual question answering.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Diffusion models</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Generative models that learn to produce data by progressively denoising noise. Widely used in image, audio and video generation.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Flow matching</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — A generative modelling approach that learns a continuous transformation from a simple noise distribution to data; used in some modern image and video generation systems.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Speech-to-speech / real-time voice models</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Models or systems that process audio and generate audio directly, often preserving conversational timing and expressive cues rather than using a separate text-only pipeline.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Inference-time scaling</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Spending additional compute at inference—through more reasoning, sampling, search or verification—to improve performance on difficult tasks.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+</ul>
+<h3>Training &amp; customization</h3>
+<ul>
+<li class="task"><span class="check"></span><span><strong>Supervised fine-tuning (SFT)</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Training a pretrained model on curated input-output examples to teach desired formats, tasks or behaviours.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>PPO (Proximal Policy Optimization)</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — A policy-gradient reinforcement-learning algorithm historically used in RLHF pipelines to update a model while constraining large policy changes.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>GRPO (Group Relative Policy Optimization)</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — A reinforcement-learning method that compares multiple sampled outputs for a prompt and uses relative rewards, often without a separate critic model.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Reward models</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Models trained to score or rank outputs according to preferences or task quality; their scores can guide preference optimization or reinforcement learning.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Reward hacking / specification gaming</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — When a model or agent exploits flaws in a reward or metric instead of achieving the intended goal. A high score does not necessarily mean the task was done correctly.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+</ul>
+<h3>Production &amp; LLMOps</h3>
+<ul>
+<li class="task"><span class="check"></span><span><strong>TTFT (time to first token)</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Latency from request arrival until the first generated token. Important for perceived responsiveness in interactive applications.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>TPOT (time per output token)</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Average time between generated output tokens after generation begins. Important for streaming throughput and user experience.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Continuous batching</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — An inference-serving technique that dynamically adds and removes requests from batches as they progress, improving accelerator utilization.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>KV cache</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Cached attention keys and values from prior tokens, avoiding recomputation during autoregressive generation. Memory use becomes a major serving constraint.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Speculative decoding</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — A smaller or faster draft model proposes tokens that a larger model verifies, potentially increasing generation speed without changing the target model&#x27;s output distribution.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Prefix / KV-cache caching</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Reusing cached computation for repeated prompt prefixes. Related to prompt caching, but the implementation and cache scope depend on the inference stack.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Model fallback &amp; resilience</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Fallback policies for provider outages, rate limits or model failures, with explicit quality, privacy, cost and latency trade-offs.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Online evaluations &amp; production feedback</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Evaluate live system behaviour using sampled traffic, user feedback, task outcomes and monitoring—while controlling privacy and avoiding feedback-loop bias.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Trace replay &amp; deterministic test fixtures</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Replay captured requests, tool results and state transitions to reproduce failures and compare changes. Exact determinism may be impossible when model outputs are stochastic or providers change.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Rate limits, quotas &amp; backpressure</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Control request and token throughput across tenants and providers. Queueing, admission control, retries and backpressure prevent overload and noisy-neighbour effects.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Cost per successful task</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Measure total cost across model calls, retries, tools, retrieval and infrastructure, divided by successfully completed tasks—not just cost per model call.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+</ul>
+<h3>Safety &amp; the big picture</h3>
+<ul>
+<li class="task"><span class="check"></span><span><strong>Indirect prompt injection</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Malicious instructions embedded in content an agent reads—such as web pages, emails or documents—rather than supplied directly by the user. Tool access makes this especially consequential.</span></li>
+<li>Reference: <a href="https://www.anthropic.com/research/prompt-injection-defenses" target="_blank" rel="noopener noreferrer">Anthropic: Mitigating prompt injections in browser use ↗</a></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Data exfiltration</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Unauthorized transfer of sensitive data through tool calls, generated content, network requests or connected applications. Treat outbound channels as security boundaries.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Least privilege &amp; scoped credentials</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Give each agent only the minimum permissions, data and credential lifetime required for its task; separate read and write capabilities where possible.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Approval gates for consequential actions</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Require explicit human confirmation before irreversible or high-impact operations such as payments, deletion, external communication or production changes.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Data provenance &amp; lineage for AI</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Track where retrieved or generated information came from, how it was transformed, and which source supported a model response or decision.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Benchmark contamination</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — When evaluation questions or answers leak into training data, making benchmark scores look stronger than genuine generalization.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>Model &amp; prompt drift</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Changes in provider models, prompts, retrieval corpora, tools or user traffic can alter system behaviour over time. Versioning and regression evals help detect this.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+</ul>
+<h3>Tools to try</h3>
+<ul>
+<li class="task"><span class="check"></span><span><strong>MLflow</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Track experiments, package models and manage evaluation or deployment workflows; it also has LLM/agent-oriented capabilities.</span></li>
+<li>Reference: <a href="https://mlflow.org/docs/latest/" target="_blank" rel="noopener noreferrer">MLflow documentation ↗</a></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>OpenTelemetry</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Vendor-neutral traces, metrics and logs. Useful for connecting LLM calls and tool execution to the rest of a distributed system.</span></li>
+<li>Reference: <a href="https://opentelemetry.io/docs/" target="_blank" rel="noopener noreferrer">OpenTelemetry documentation ↗</a></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>LiteLLM Proxy</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — A deployable gateway for routing model requests, managing provider keys, budgets and observability; distinguish it from using the LiteLLM Python library.</span></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+<li class="task"><span class="check"></span><span><strong>OWASP GenAI Security Project</strong> &lt;sub&gt;ADDED · P1/P2 depending on your work&lt;/sub&gt; — Security guidance and risk taxonomies for LLM applications and agentic systems.</span></li>
+<li>Reference: <a href="https://genai.owasp.org/" target="_blank" rel="noopener noreferrer">OWASP GenAI Security Project ↗</a></li>
+<li>Notes: <em>Add a concrete example and trade-offs.</em></li>
+</ul>
+<h2>Practical engineering checklist</h2>
+<p>Use this checklist when evaluating an LLM or agent feature for production.</p>
+<ul>
+<li class="task"><span class="check"></span><span><strong>Problem fit:</strong> Is an LLM or agent actually needed, or would deterministic code/search/rules be simpler?</span></li>
+<li class="task"><span class="check"></span><span><strong>System boundary:</strong> Which parts are model-driven and which remain deterministic?</span></li>
+<li class="task"><span class="check"></span><span><strong>Data:</strong> Are sources current, permissioned, traceable and suitable for model use?</span></li>
+<li class="task"><span class="check"></span><span><strong>Retrieval:</strong> Have chunking, hybrid search, reranking and retrieval quality been measured?</span></li>
+<li class="task"><span class="check"></span><span><strong>Tools:</strong> Are tool schemas narrow, validated, documented and safe to retry?</span></li>
+<li class="task"><span class="check"></span><span><strong>State:</strong> Can the system resume after timeouts, restarts and partial failures?</span></li>
+<li class="task"><span class="check"></span><span><strong>Security:</strong> Are credentials scoped, untrusted content isolated, and outbound actions controlled?</span></li>
+<li class="task"><span class="check"></span><span><strong>Evaluation:</strong> Is there a representative test set with task-level success criteria and regression tests?</span></li>
+<li class="task"><span class="check"></span><span><strong>Observability:</strong> Can you inspect prompts, model versions, retrieval results, tool calls, latency and failures?</span></li>
+<li class="task"><span class="check"></span><span><strong>Economics:</strong> Do you know cost per successful task, not just token price?</span></li>
+<li class="task"><span class="check"></span><span><strong>Fallbacks:</strong> What happens on provider outage, rate limiting, malformed output or tool failure?</span></li>
+<li class="task"><span class="check"></span><span><strong>Human control:</strong> Which actions require review or explicit approval?</span></li>
+</ul>
+<h2>Metrics worth knowing</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Metric</th><th>What it tells you</th></tr></thead><tbody>
+<tr><td>Task success rate</td><td>Whether the end-to-end job was actually completed correctly</td></tr>
+<tr><td>Groundedness / citation accuracy</td><td>Whether claims are supported by retrieved sources</td></tr>
+<tr><td>Tool-call success rate</td><td>Whether integrations are invoked correctly and reliably</td></tr>
+<tr><td>TTFT</td><td>Time until the first generated token</td></tr>
+<tr><td>TPOT</td><td>Time between generated output tokens</td></tr>
+<tr><td>p50 / p95 / p99 latency</td><td>Typical and tail response times</td></tr>
+<tr><td>Tokens per task</td><td>Prompt and completion consumption for a complete task</td></tr>
+<tr><td>Cost per successful task</td><td>Total model and tool cost divided by successful outcomes</td></tr>
+<tr><td>Retry / fallback rate</td><td>How often the system needs recovery paths</td></tr>
+<tr><td>Human-escalation rate</td><td>How often the system cannot safely complete without a person</td></tr>
+</tbody></table></div>
+<h2>Recommended reading shelf</h2>
+<ul>
+<li><a href="https://www.anthropic.com/research/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener noreferrer">Anthropic — Effective context engineering for AI agents ↗</a> — Context management, context rot and agent design.</li>
+<li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener noreferrer">Anthropic — Building effective agents ↗</a> — A practical distinction between workflows and agents, plus common orchestration patterns.</li>
+<li><a href="https://cloud.google.com/blog/products/ai-machine-learning/a-devs-guide-to-production-ready-ai-agents/" target="_blank" rel="noopener noreferrer">Google Cloud — A developer&#x27;s guide to production-ready AI agents ↗</a> — Production concerns: evaluation, state, security and operations.</li>
+<li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener noreferrer">MCP — Official specification and documentation ↗</a> — Protocol concepts, transports, authorization and server/client responsibilities.</li>
+<li><a href="https://www.nist.gov/news-events/news/2026/02/announcing-ai-agent-standards-initiative-interoperable-and-secure" target="_blank" rel="noopener noreferrer">NIST — AI Agent Standards Initiative ↗</a> — Interoperability and security standardization context.</li>
+<li><a href="https://engineering-playbook.aisi.org.uk/" target="_blank" rel="noopener noreferrer">UK AI Security Institute — Engineering Playbook ↗</a> — Evaluation infrastructure, sandboxing, provider proxies and scalable research systems.</li>
+<li><a href="https://sage.cs.princeton.edu/trends/" target="_blank" rel="noopener noreferrer">Princeton — Emerging Trends in AI Agent Evaluation ↗</a> — Research-oriented map of how agent evaluation is evolving.</li>
+<li><a href="https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentic-ai-lens.html" target="_blank" rel="noopener noreferrer">AWS — Agentic AI Lens ↗</a> — Architecture and operational considerations for production agentic systems.</li>
+</ul>
+<h2>Glossary maintenance log</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Date</th><th>Change</th><th>Source / rationale</th></tr></thead><tbody>
+<tr><td>31 Oct 2026</td><td>Converted the HTML tracker into an editable Markdown roadmap; retained original sections and added practical engineering concepts.</td><td>Original uploaded tracker plus the reference shelf above.</td></tr>
+</tbody></table></div>
+<h2>Open questions / topics to investigate</h2>
+<ul>
+<li class="task"><span class="check"></span><span>Which agent workloads genuinely benefit from autonomy rather than a deterministic workflow?</span></li>
+<li class="task"><span class="check"></span><span>What is the smallest useful evaluation suite for an agent that can call production tools?</span></li>
+<li class="task"><span class="check"></span><span>How should multi-tenant AI workloads enforce per-tenant quotas, isolation and cost attribution?</span></li>
+<li class="task"><span class="check"></span><span>When is a vector database justified over Postgres + pgvector or lexical search?</span></li>
+<li class="task"><span class="check"></span><span>What is the right boundary between model context, external memory and a conventional database?</span></li>
+</ul>
+<h2>Notes</h2>
+<p><em>Use this space for your own mental models, architecture sketches, links, interview explanations and lessons learned.</em></p>
+<footer>AI Buzzword Tracker · A living document. Verify fast-moving tools, standards and announcements against their primary sources before relying on them.</footer>
+</main>
+</body>
+</html>
